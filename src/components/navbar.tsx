@@ -10,7 +10,7 @@ export const Navbar: React.FC = () => {
             <span className='hidden font-bold sm:inline-block'>Better-Auth Handson</span>
           </Link>
           <nav className='flex items-center space-x-6 text-sm font-medium'>
-            <Link href='/login'>ログイン</Link>
+            <Link href='/signin'>ログイン</Link>
           </nav>
         </div>
         <div className='flex flex-1 items-center justify-between space-x-2 md:justify-end'>

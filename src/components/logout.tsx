@@ -12,7 +12,7 @@ export const LogoutButton: React.FC = () => {
   const handleLogout = async () => {
     setIsLoading(true);
     try {
-      await client.signOut({ fetchOptions: { onSuccess: () => router.push('/login') } });
+      await client.signOut({ fetchOptions: { onSuccess: () => router.push('/signin') } });
     } catch (error) {
       console.error('ログアウト中にエラーが発生しました:', error);
     } finally {
