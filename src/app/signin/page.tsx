@@ -33,30 +33,30 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className='flex min-h-screen items-center justify-center bg-gray-100'>
+    <div className='flex flex-1 items-center justify-center bg-gray-100'>
       <Card className='w-[350px]'>
         <form onSubmit={handleSubmit}>
           <CardHeader>
-            <CardTitle>ログイン</CardTitle>
-            <CardDescription>ログインしてください</CardDescription>
+            <CardTitle className='text-2xl font-bold'>ログイン</CardTitle>
+            <CardDescription>アカウントにアクセスしてください</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className='space-y-4'>
             {error && (
-              <div className='flex items-center rounded-md bg-destructive/30 p-2'>
-                <LuAlertTriangle className='mr-1' />
+              <div className='flex items-center rounded-md bg-destructive/30 p-3 text-sm'>
+                <LuAlertTriangle className='mr-2 shrink-0' />
                 {error}
               </div>
             )}
-            <div>
-              <Label htmlFor='email'>Email</Label>
-              <Input id='email' name='email' type='email' />
+            <div className='space-y-2'>
+              <Label htmlFor='email'>メールアドレス</Label>
+              <Input id='email' name='email' type='email' placeholder='your@email.com' />
             </div>
-            <div>
-              <Label htmlFor='password'>Password</Label>
-              <Input id='password' name='password' type='password' />
+            <div className='space-y-2'>
+              <Label htmlFor='password'>パスワード</Label>
+              <Input id='password' name='password' type='password' placeholder='••••••••' />
             </div>
           </CardContent>
-          <CardFooter className='flex flex-col space-y-2'>
+          <CardFooter className='flex flex-col space-y-3'>
             <Button type='submit' className='w-full'>
               ログイン <LuArrowRight className='ml-2 size-4' />
             </Button>
@@ -68,10 +68,10 @@ export default function LoginPage() {
             >
               <SiGithub className='mr-2' /> GitHubでログイン
             </Button>
-            <div className='text-sm text-gray-500'>
-              <span className='mr-2'>or</span>
-              <Link href='/signup'>
-                <span className='text-blue-500'>Signup</span>
+            <div className='text-center text-sm text-gray-500'>
+              アカウントをお持ちでない場合は
+              <Link href='/signup' className='ml-1 text-blue-500 hover:underline'>
+                新規登録
               </Link>
             </div>
           </CardFooter>
