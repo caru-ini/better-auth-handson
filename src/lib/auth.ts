@@ -1,20 +1,20 @@
-import { PrismaClient } from '@prisma/client';
-import { betterAuth } from 'better-auth';
-import { prismaAdapter } from 'better-auth/adapters/prisma';
-
-const prisma = new PrismaClient();
+import { env } from "@/env.mjs";
+import { betterAuth } from "better-auth";
+import { prismaAdapter } from "better-auth/adapters/prisma";
+import { nextCookies } from "better-auth/next-js";
+import { db } from "./db";
 
 export const auth = betterAuth({
-  database: prismaAdapter(prisma, {
-    provider: 'postgresql',
+  secret: env.BETTER_AUTH_SECRET,
+  url: env.BETTER_AUTH_URL,
+  database: prismaAdapter(db, {
+    provider: "sqlite",
   }),
   socialProviders: {
     github: {
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
     },
   },
-  emailAndPassword: {
-    enabled: true,
-  },
+  plugins: [nextCookies()],
 });
